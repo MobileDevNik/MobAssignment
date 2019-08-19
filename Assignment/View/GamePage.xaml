@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Assignment.View.GamePage" BackgroundColor="White">
+
+    <Grid Padding="10"
+          RowSpacing="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="Auto"/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackLayout Grid.Row="0"
+                Grid.Column="0"
+                >
+            <Button HeightRequest = "60"
+                Text="Done"
+                FontAttributes="Italic"
+                Command="{Binding DoneGameCommand}"
+                BackgroundColor="White"
+                TextColor="Blue"
+                FontSize = "30"
+               AutomationId="DoneGameCommand"/>
+            <Label Text="Playing against my mobile"
+               HorizontalTextAlignment="Center"
+                    FontAttributes="Italic"
+                TextColor="Red"
+                 FontSize = "20"
+                />
+        </StackLayout>
+
+        <Grid Grid.Row="1"
+                Grid.Column="0"
+                ColumnSpacing="0" RowSpacing="0" HorizontalOptions="Center" VerticalOptions="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="100"/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Image Source="linehorizontal1.png"  Grid.Row="1" Grid.Column="0"
+                Grid.ColumnSpan="5"></Image>
+            <Image Source="linehorizontal2.png"  Grid.Row="3" Grid.Column="0"
+                Grid.ColumnSpan="5"></Image>
+            <Image Source="linevertical1.png"  Grid.Row="0" Grid.Column="1"
+                Grid.RowSpan="5"></Image>
+            <Image Source="linevertical2.png"  Grid.Row="0" Grid.Column="3"
+                Grid.RowSpan="5"></Image>
+
+            <Button Grid.Row="0"
+                Grid.Column="0"
+                HeightRequest = "100"
+                Command="{Binding PlayCommand}"
+                CommandParameter="0"
+                AutomationId="Play0"
+                ImageSource="{Binding Play0}"
+                    BackgroundColor="White"
+                />
+
+            <Button Grid.Row="2"
+                Grid.Column="0"
+                HeightRequest = "100"
+                Command="{Binding PlayCommand}"
+                CommandParameter="1"
+                AutomationId="Play1"
+                ImageSource="{Binding Play1}"
+                BackgroundColor="White"/>
+
+            <Button Grid.Row="4"
+                Grid.Column="0"
+                HeightRequest = "100"
+                Command="{Binding PlayCommand}"
+                CommandParameter="2"
+                AutomationId="Play2"
+                 ImageSource="{Binding Play2}"
+                BackgroundColor="White"/>
+
+            <Button Grid.Row="0"
+                Grid.Column="2"
+                HeightRequest = "100"
+               Command="{Binding PlayCommand}"
+                CommandParameter="3"
+                AutomationId="Play3"
+                ImageSource="{Binding Play3}"
+                BackgroundColor="White"/>
+
+
+            <Button Grid.Row="2"
+                Grid.Column="2"
+                HeightRequest = "100"
+                Command="{Binding PlayCommand}"
+                CommandParameter="4"
+                AutomationId="Play4"
+                ImageSource="{Binding Play4}"
+                BackgroundColor="White"/>
+
+
+            <Button Grid.Row="4"
+                Grid.Column="2"
+                HeightRequest = "100"
+                Command="{Binding PlayCommand}"
+                CommandParameter="5"
+                AutomationId="Play5"
+                ImageSource="{Binding Play5}"
+                BackgroundColor="White"/>
+
+            <Button Grid.Row="0"
+                Grid.Column="4"
+                HeightRequest = "100"
+                Command="{Binding PlayCommand}"
+                CommandParameter="6"
+                AutomationId="Play6"
+                ImageSource="{Binding Play6}"
+                BackgroundColor="White"/>
+
+            <Button Grid.Row="2"
+                Grid.Column="4"
+                HeightRequest = "100"
+                Command="{Binding PlayCommand}"
+                CommandParameter="7"
+                AutomationId="Play7"
+                ImageSource="{Binding Play7}"
+                BackgroundColor="White"/>
+
+            <Button Grid.Row="4"
+                Grid.Column="4"
+                HeightRequest = "100"
+                Command="{Binding PlayCommand}"
+                CommandParameter="8"
+                AutomationId="Play8"
+                ImageSource="{Binding Play8}"
+                BackgroundColor="White"
+                    />
+        </Grid>
+        <StackLayout Grid.Row="2"
+                Grid.Column="0"
+                     IsVisible="{Binding IsBusy}"
+                >
+            <Label
+               HorizontalTextAlignment="Center"
+                TextColor="Red"
+                 FontSize = "20"
+                Text="Mobile player's move"
+                />
+            <ActivityIndicator 
+                           IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           Color="Black" MinimumHeightRequest="20" />
+        </StackLayout>
+
+        <Label Grid.Row="3"
+                Grid.Column="0" Text="{Binding GameResult}"
+               IsVisible="{Binding GameResultVisible}"
+               HorizontalTextAlignment="Center"
+                    FontAttributes="Italic"
+                TextColor="Red"
+                 FontSize = "25"
+                />
+        <Image Source="{Binding GameResultImage}" 
+               IsVisible="{Binding GameResultImageVisible}"
+               Grid.Row="4" 
+               Grid.Column="0"
+               MinimumHeightRequest="60"
+               MinimumWidthRequest="60"
+               ></Image>
+
+        <Button Grid.Row="5"
+                Grid.Column="0"
+                HeightRequest = "60"
+                Text="PLAY AGAIN"
+                FontAttributes="Italic"
+                Command="{Binding PlayAgainCommand}"
+                IsVisible="{Binding PlayAgainVisible}"
+                BackgroundColor="White"
+                TextColor="Blue"
+                FontSize = "30"
+                 />
+    </Grid>
+ 
+</ContentPage>

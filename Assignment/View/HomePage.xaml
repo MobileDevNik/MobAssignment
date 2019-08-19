@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Assignment"
+    x:Class="Assignment.HomePage" BackgroundColor="White">
+    <Grid Padding="10"
+          RowSpacing="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="300"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Image Grid.Row="0"
+                Grid.Column="0" 
+               Source="logo.png"
+                BackgroundColor="white"
+               Margin="10,10,10,10"></Image>
+
+        <StackLayout Grid.Row="1"
+                Grid.Column="0"
+                Margin="50,50">
+            <ProgressBar 
+                 Progress="{Binding Progress}"
+                MinimumHeightRequest="50"
+                ProgressColor="Red"
+               BackgroundColor="Blue"/>
+
+            <Label 
+               Text="{Binding TotalMatches}"
+               HorizontalTextAlignment="Center"
+                TextColor="Red"
+                 FontSize = "20"
+                />
+        </StackLayout>
+        
+        
+        <Button Grid.Row="4"
+                Grid.Column="0"
+                HeightRequest = "100"
+                Text="Play"
+                Command="{Binding PlayGameCommand}"
+                BackgroundColor="White"
+                TextColor="Blue"
+                FontSize = "40"
+               AutomationId="StartGameButton"/>
+
+
+    </Grid>
+   
+ </ContentPage>
