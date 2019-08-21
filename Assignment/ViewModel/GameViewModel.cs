@@ -211,7 +211,7 @@ namespace Assignment.ViewModel
                       HumanMoves = 0;
                       AIMoves = 0;
                       ShowResult(false);
-                      Device.StartTimer(TimeSpan.FromMinutes(0.1), () =>
+                      Device.StartTimer(TimeSpan.FromMinutes(0.2), () =>
                       {
                           if (Moves == 0)
                           {
@@ -338,7 +338,7 @@ namespace Assignment.ViewModel
                 {
                     IsBusy = true;
 
-                    Device.StartTimer(TimeSpan.FromMinutes(0.1), () =>
+                    Device.StartTimer(TimeSpan.FromMinutes(0.06), () =>
                     {
                         IsBusy = false;
                         Play(makeAIMove().ToString());
@@ -447,12 +447,23 @@ namespace Assignment.ViewModel
                     }
                 }
             }
+
+            for (int i = 0; i < 8; i++)
+            {
+                 for (int j = 0; j < 3; j++)
+                    {
+                        if (winningCombos[i, j] == 0)
+                        {
+                            return GetGridPosition(winningIndexes[i, j, 0], winningIndexes[i, j, 1]);
+                        }
+                    }
+            }
             return 1;
         }
 
         public void InitiateAIPlayer() {
             IsBusy = true;
-            Device.StartTimer(TimeSpan.FromMinutes(0.1), () =>
+            Device.StartTimer(TimeSpan.FromMinutes(0.06), () =>
             {
 
                 IsBusy = false;

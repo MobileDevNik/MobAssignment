@@ -27,7 +27,7 @@ namespace Assignment.View
             base.OnAppearing();
             //your code here;
             vm.ShowResult(false);
-            Device.StartTimer(TimeSpan.FromMinutes(0.1), () =>
+            Device.StartTimer(TimeSpan.FromMinutes(0.2), () =>
             {
                 if (vm.Moves == 0)
                 {
